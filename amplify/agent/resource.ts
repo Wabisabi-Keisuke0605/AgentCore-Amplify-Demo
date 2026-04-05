@@ -34,6 +34,7 @@ export function createAgentCoreRuntime(
     networkConfiguration: agentcore.RuntimeNetworkConfiguration.usingPublicNetwork(),
   });
 
+  // Bedrock用
   runtime.addToRolePolicy(
     new iam.PolicyStatement({
       actions: [
@@ -44,6 +45,17 @@ export function createAgentCoreRuntime(
         'arn:aws:bedrock:*::foundation-model/*',
         'arn:aws:bedrock:*:*:inference-profile/*',
       ],
+    })
+  );
+
+  // MarketPlace
+  runtime.addToRolePolicy(
+    new iam.PolicyStatement({
+      actions: [
+        'aws-marketplace:ViewSubscriptions',
+        'aws-marketplace:Subscribe',
+      ],
+      resources: ['*'],
     })
   );
 
