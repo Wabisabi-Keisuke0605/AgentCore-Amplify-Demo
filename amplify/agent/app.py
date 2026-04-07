@@ -40,7 +40,7 @@ async def invoke_agent(payload, context):
     prompt = payload.get("prompt")
 
     agent = Agent(
-        model="global.anthropic.claude-haiku-4-5-20251001-v1:0",
+        model="jp.anthropic.claude-haiku-4-5-20251001-v1:0",
         system_prompt="aws.amazon.com/about-aws/whats-new/recent/feed からRSSを取得して",
         tools=[rss]
     )
